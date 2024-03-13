@@ -4,12 +4,12 @@ https://docs.autodotes.com/EE%20Crash%20Course/01_overview/
 ## Requirements for this workflow:
 1) A RHEL 8 or 9 server (VM or physical) with internet access
 2) The ansible-builder application. This can be installed from an rpm in the ansible-automation-platform-2.4-for-rhel9-x86_64-rpms, from the AAP bundled installer or from pip
-** Note - If installing from the repo you will need to enable the repo, install the rpm, and disable the repo as it should be disabled by default to avoid patching issues.
-** subscription-manager repos --enable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms
-** dnf install ansible-builder
-** ansible-builder --version
-**  3.0.1
-** subscription-manager repos --disable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms
+  * if installing from the repo you will need to enable the repo, install the rpm, and disable the repo as it should be disabled by default to avoid patching issues.
+  * subscription-manager repos --enable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms
+  * dnf install ansible-builder
+  * ansible-builder --version
+  ** 3.0.1
+  * subscription-manager repos --disable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms
 3) A container repository for hosting the built EEs - AAPs Private Automation Hub, Quay.io or similar
 4) Your login details for Red Hats Certified Content Collections
 ** Get this from [console.redhat.com](https://console.redhat.com/ansible/automation-hub/token)
