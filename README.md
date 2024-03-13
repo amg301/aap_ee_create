@@ -8,7 +8,7 @@ https://docs.autodotes.com/EE%20Crash%20Course/01_overview/
   * subscription-manager repos --enable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms
   * dnf install ansible-builder
   * ansible-builder --version
-  ** 3.0.1
+     3.0.1
   * subscription-manager repos --disable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms
 3) A container repository for hosting the built EEs - AAPs Private Automation Hub, Quay.io or similar
 4) Your login details for Red Hats Certified Content Collections
