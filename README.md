@@ -37,3 +37,8 @@
     * define the pull style. ------ means missing, only pull if EE does not exist
     * Associate the Registry Credential you created in the previous step
 5) Define the EE in a job template and run it
+
+## In this Repo
+  * You will find an example execution-environment.yml file
+  * You will find a directory showing additional files - an ansible.cfg and an additional repo
+  * You will find the build context that is created by the ansible-builder tool
