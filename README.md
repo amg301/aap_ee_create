@@ -14,7 +14,7 @@
       * This example uses [Red Hat Quay](https://quay.io/) instead
       * Other common container repos include GitHub Container Registry, GitLab Container Registry, JFrog Container Registry, Docker Hub, Harbor and more.
 5) Your login details for Red Hats Certified Content Collections
-    * Get this from [console.redhat.com](https://console.redhat.com/ansible/automation-hub/token)
+    * Get this from [Red Hat Automation Hub on Console](https://console.redhat.com/ansible/automation-hub/token)
     * Take note of the server URL and token and define this in your ansible.cfg
 
 ## Key points
