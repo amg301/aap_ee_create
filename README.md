@@ -9,8 +9,11 @@
       * ```dnf install ansible-builder```
       * ```ansible-builder --version``` should return ```3.0.1``` (correct as of March 2024)
       * ```subscription-manager repos --disable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms```
-3) A container repository for hosting the built EEs - AAPs Private Automation Hub, Quay.io or similar
-4) Your login details for Red Hats Certified Content Collections
+3) A container repository for hosting the built EEs
+    * One of the functions of Private Automation Hub which is part of the platform is a container registry.
+      * This example uses [Red Hat Quay](https://quay.io/) instead
+      * Other common container repos include GitHub Container Registry, GitLab Container Registry, JFrog Container Registry, Docker Hub, Harbor and more.
+5) Your login details for Red Hats Certified Content Collections
     * Get this from [console.redhat.com](https://console.redhat.com/ansible/automation-hub/token)
     * Take note of the server URL and token and define this in your ansible.cfg
 
