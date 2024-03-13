@@ -1,0 +1,7 @@
+[microsoftrhel8]
+name=microsoftrhel8
+baseurl=https://packages.microsoft.com/rhel/8/prod/
+repo_gpgcheck=0
+gpgcheck=0
+enabled=1
+gpgkey=https://packages.microsoft.com/rhel/8/prod/repodata/repomd.xml.key

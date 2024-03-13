@@ -1,12 +1,52 @@
 ---
-version: 1
-dependencies:
-  galaxy: requirements.yml
-  python: requirements.txt
-  system: bindep.txt
+# This is the version of ansible-builder this file is designed to work with. It is not related to EE versioning
+# yamllint disable rule:line-length
+version: 3
 
+options:
+  package_manager_path: /usr/bin/microdnf
+
+# This is the base image that the EE is going to be built from. We recommend always building from minimal so you only inlcude what you need in the EE
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-24/ee-minimal-rhel8:latest
+# This is the image details - https://catalog.redhat.com/software/containers/ansible-automation-platform-24/ee-minimal-rhel8/63a3338544b6f291781716c7?architecture=amd64&image=65d848862dc82902d5405586
+
+# In this section we are mapping the local ./files folder into the build context which is created by the ansible-builder tool.
+additional_build_files:
+  - src: files
+    dest: configs
+
+# Here we can perform additional steps. In this case we are loading in a default ansible.cfg and adding in the microsoft repo so we can install powershell. Actions can be done before or after different build steps
 additional_build_steps:
-  prepend: |
-    RUN pip3 install --upgrade pip setuptools
-  append:
-    - RUN ls -la /etc
+  prepend_final:
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+    - COPY _build/configs/microsoft.repo /etc/yum.repos.d/microsoft.repo
+    - RUN whoami
+    - RUN cat /etc/os-release
+  append_final:
+    - RUN microdnf install --assumeyes powershell
+
+# Here we are defining the dependencies needed.
+dependencies:
+# system dependencies are RPMs.
+  system:
+    - curl
+    - git
+# only need to define python dependencies that are not defined by a collection. Each collection added below will automatically include required python dependencies
+  python:
+    - jmespath
+# collections required
+  galaxy:
+    collections:
+      - name: community.general # needed for yaml stdout callback plugin
+# https://docs.ansible.com/ansible/latest/collections/community/general/index.html
+# https://github.com/ansible-collections/community.general
+      - name: ansible.posix # needed for timer, profile_tasks and profile_roles callbacks
+# https://docs.ansible.com/ansible/latest/collections/community/vmware/index.html
+# https://github.com/ansible-collections/community.vmware
+# https://github.com/ansible-collections/community.vmware/blob/main/requirements.txt
+      - name: community.vmware
+        version: "4.2.0"
+      - name: community.windows
+        version: "2.1.0"
