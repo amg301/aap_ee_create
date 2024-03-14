@@ -20,19 +20,26 @@ additional_build_files:
 # Here we can perform additional steps. In this case we are loading in a default ansible.cfg and adding in the microsoft repo so we can install powershell. Actions can be done before or after different build steps
 additional_build_steps:
   prepend_final:
-    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
-    - COPY _build/configs/microsoft.repo /etc/yum.repos.d/microsoft.repo
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg # adds the ansible.cfg with galaxy repos to the EE
+    - COPY _build/configs/microsoft.repo /etc/yum.repos.d/microsoft.repo # adds a new repo definition for dnf to use
+    - COPY _build/configs/krb5.conf /etc/krb5.conf # adds a krb5 file for kerberos authentication to AD on windows systems
+    - RUN dnf install -y crypto-policies-scripts # installs crypto rpms
+    - RUN update-crypto-policies --set DEFAULT:AD-SUPPORT # sets policies for kerberos
     - RUN whoami
     - RUN cat /etc/os-release
   append_final:
+    - COPY _build/configs/certs/* /etc/pki/ca-trust/source/anchors/ # copies certs to EE
+    - RUN update-ca-trust extract # rebuilds the trust using new certs
     - RUN microdnf install --assumeyes powershell
 
 # Here we are defining the dependencies needed.
 dependencies:
 # system dependencies are RPMs.
   system:
-    - curl
-    - git
+    - curl [platform:rpm]
+    - git [platform:rpm]
+    - krb5-libs [platform:rpm] # rpms for kerberos
+    - krb5-workstation [platform:rpm] # rpms for kerberos
 # only need to define python dependencies that are not defined by a collection. Each collection added below will automatically include required python dependencies
   python:
     - jmespath
