@@ -19,8 +19,9 @@ additional_build_files:
 
 # Here we can perform additional steps. In this case we are loading in a default ansible.cfg and adding in the microsoft repo so we can install powershell. Actions can be done before or after different build steps
 additional_build_steps:
-  prepend_final:
+  prepend_galaxy:
     - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg # adds the ansible.cfg with galaxy repos to the EE
+  prepend_final:
     - COPY _build/configs/microsoft.repo /etc/yum.repos.d/microsoft.repo # adds a new repo definition for dnf to use
     - COPY _build/configs/krb5.conf /etc/krb5.conf # adds a krb5 file for kerberos authentication to AD on windows systems
     - RUN dnf install -y crypto-policies-scripts # installs crypto rpms
