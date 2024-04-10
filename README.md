@@ -1,8 +1,6 @@
 # Here is a great overview for Execution Environments
 [Execution Environments Crash Course](https://docs.autodotes.com/EE%20Crash%20Course/01_overview/)
 
-Some new info - and even more info
-
 ## Requirements for this workflow:
 1) A RHEL 8 or 9 server (VM or physical) with internet access
 2) The ansible-builder application. This can be installed from an rpm in the ansible-automation-platform-2.4-for-rhel9-x86_64-rpms, from the AAP bundled installer or from pip
