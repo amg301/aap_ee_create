@@ -39,6 +39,7 @@ dependencies:
     - git [platform:rpm]
     - krb5-libs [platform:rpm] # rpms for kerberos
     - krb5-workstation [platform:rpm] # rpms for kerberos
+    - pwsh [platform:rpm]
 # only need to define python dependencies that are not defined by a collection. Each collection added below will automatically include required python dependencies
   python:
     - jmespath
