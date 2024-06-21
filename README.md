@@ -7,7 +7,7 @@
     * if installing from the repo you will need to enable the repo, install the rpm, and disable the repo as it should be disabled by default to avoid patching issues.
       * ```subscription-manager repos --enable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms```
       * ```dnf install ansible-builder```
-      * ```ansible-builder --version``` should return ```3.0.1``` (correct as of March 2024)
+      * ```ansible-builder --version``` should be ```3.0.1``` (correct as of March 2024)
       * ```subscription-manager repos --disable ansible-automation-platform-2.4-for-rhel9-x86_64-rpms```
 3) A container repository for hosting the built EEs
     * One of the functions of Private Automation Hub which is part of the platform is a container registry.
