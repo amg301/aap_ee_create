@@ -17,12 +17,12 @@
       * Other common container repos include GitHub Container Registry, GitLab Container Registry, JFrog Container Registry, Docker Hub, Harbor and more.
 5) Your login details for Red Hats Certified Content Collections
     * Get this from [Red Hat Automation Hub on Console](https://console.redhat.com/ansible/automation-hub/token)
-    * Take note of the server URL and token and define this in your ansible.cfg. See my example (./files/ansible.cfg)
+    * Take note of the server URL and token and define this in your [ansible.cfg](./files/ansible.cfg)
 
 ## Key Points
 1) Repo structure
     * each EE you want to build will be a unique directory containing a single execution-environment.yml file
-2) You create the execution-environment.yml file (use my example as a guide ./execution-environment.yml)
+2) You create the [execution-environment.yml](./execution-environment.yml) file
 3) Versioning your EE is done with tags.
 4) The container image is built locally and then pushed into the container repo for storage & serving to AAP Automation Controller
 5) The EE needs to be defined within AAP Automation Controller for use
