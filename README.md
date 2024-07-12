@@ -1,7 +1,7 @@
 # Here is a great overview for Execution Environments
 [Execution Environments Crash Course](https://docs.autodotes.com/EE%20Crash%20Course/01_overview/)
 
-## Requirements for this workflow:
+## Requirements
 1) A RHEL 8 or 9 server (VM or physical) with internet access
 2) The ansible-builder application. 
     * this can be installed from an rpm in the ansible-automation-platform-2.4-for-rhel9-x86_64-rpms or from pip
@@ -19,7 +19,7 @@
     * get this from [Red Hat Automation Hub on Console](https://console.redhat.com/ansible/automation-hub/token)
     * take note of the server URL and token and define this in your ansible.cfg (see my example ./files/ansible.cfg)
 
-## Key points
+## Key Points
 1) Repo structure
     * each EE you want to build will be a unique directory containing a single execution-environment.yml file
 2) You create the execution-environment.yml file (use my example as a guide ./execution-environment.yml)
@@ -28,7 +28,7 @@
 5) The EE needs to be defined within AAP Automation Controller for use
     * EEs can be define at the inventory, project, job_template and workflow_template levels or as a default for all jobs
 
-## The commands 
+## How To 
 These are run from inside the root of the directory you created for this EE build. The one with the execution-environment.yml file in it.
 1) ```ansible-builder build -t quay.io/agarrett/aap-ees/example-ee:0.0.1```
     * the -t is critical. This tags with EE with the container repository and version. Don't use latest, assign that later.
