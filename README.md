@@ -51,8 +51,3 @@ These are run from inside the root of the directory you created for this EE buil
 ![Automation Controller EE example-ee:0.0.1 definition](./images/automation_controller_example-ee_definition.png)
 6) Define the EE in a job_template and run it
     * If you updated the definition of the "Default execution environment" in step 5 and the job_template does not have an EE explicitly defined then you would not have to update the job_template.
-
-## In this Repo
-  * You will find an example execution-environment.yml file
-  * You will find a directory showing additional files - an ansible.cfg and an additional repo
-  * You will find the build context that is created by the ansible-builder tool
