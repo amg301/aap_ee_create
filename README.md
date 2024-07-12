@@ -28,7 +28,8 @@
 5) The EE needs to be defined within AAP Automation Controller for use
     * EEs can be define at the inventory, project, job_template and workflow_template levels or as a default for all jobs
 
-## The commands you will need. These are run from inside the root of the directory you created for this EE build. The one with the execution-environment.yml file in it.
+## The commands 
+These are run from inside the root of the directory you created for this EE build. The one with the execution-environment.yml file in it.
 1) ```ansible-builder build -t quay.io/agarrett/aap-ees/example-ee:0.0.1```
     * the -t is critical. This tags with EE with the container repository and version. Don't use latest, assign that later.
     * if you are using a different container repo change quay.io/agarrett/aap-ees to the right info. The name of the EE here is example-ee and the version is 0.0.1
